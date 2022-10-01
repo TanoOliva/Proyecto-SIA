@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 
 public class sistema {
@@ -10,15 +11,17 @@ public class sistema {
 
 	public static void main(String[] args) {
 		HashMap<String,eventos> listaEventos = new HashMap<String,eventos>();
-		CSV archivo=new CSV();
-		archivo.leerArchivo("C:\\Users\\antop\\Downloads\\Eventos.csv",listaEventos);
+		ArrayList <eventos> filtroEventos = new ArrayList<eventos>();
 		
+		
+		CSV archivo=new CSV();
+		archivo.leerArchivo("C:\\Users\\lukio\\Desktop\\Eventos2.csv",listaEventos);
+		archivo.leerArchivo("C:\\Users\\lukio\\Desktop\\Eventos2.csv",filtroEventos);
 		
 		usuario obj1 = new usuario();
 		String ingresado;
 		int int_ingresado;
-		System.out.println("MENÚ PRINCIPAL:\n");
-		System.out.println(" 1- Registrarse\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
+		System.out.println(" 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
 		System.out.println("Ingrese opción:");
 		opcion = Integer.parseInt(scan.nextLine());
 		
@@ -26,7 +29,7 @@ public class sistema {
 			
 			if (opcion == 1) {
 				
-				System.out.println("Ingrese los datos socilitados");
+				System.out.println("Ingrese los datos socilitados:");
 	        	System.out.println("Nombre y apellido (todo en minuscula):");
 	        	ingresado = scan.nextLine();
 	        	obj1.setNombre_usuario(ingresado);
@@ -46,7 +49,7 @@ public class sistema {
 				
 			}
 			if (opcion == 2) {
-				System.out.println(" 1- Lista de eventos\n 2- Buscar eventos por nombre\n 3- Filtrar eventos por tipo\n 4- Mostrar Compradores y cantidad total de entradas vendidas del evento\n 0- Volver al menu principal\n");
+				System.out.println(" 1- Lista de eventos\n 2- Buscar eventos\n 3- Filtrar eventos por tipo\n 4- Mostrar Compradores y cantidad total de entradas vendidas del evento\n 0- Volver al menu principal\n");
 				e = Integer.parseInt(scan.nextLine());
 				
 				if(e == 1) {
@@ -59,13 +62,13 @@ public class sistema {
 				}
 				if(e == 3) {
 					
-					filtrarEventos(listaEventos);
+					//filtrarEventos(listaEventos);
 				}
 				if (e==4) {
 					String buscado;
 					String clave;
 				    Iterator<String> eventos = listaEventos.keySet().iterator();
-				    System.out.println("Ingrese el nombre del evento:");
+				    System.out.println("Ingrese el nombre del evento a Mostrar:");
 				    buscado= scan.nextLine();
 				    while(eventos.hasNext()){
 				        clave = eventos.next();
@@ -85,7 +88,6 @@ public class sistema {
 				compras(listaEventos,obj1);
 			}
 			if (opcion == 0) {
-				System.out.println("Gracias por preferirnos <3 \n Hasta luego ");
 				break;
 			}
 			
@@ -136,14 +138,37 @@ public class sistema {
 	}  
 	    
 	static void saludar(String nombre){
-	    System.out.println("\n Hola "+ nombre+" te has registrado con éxito :) \n");
+	    System.out.println("Hola "+ nombre+" te has registrado con éxito :) \n");
 	    System.out.println("MENU PRINCIPAL:\n");
 	}
+
+	/*
+	static void mostrarTipos(ArrayList<eventos> filtroEventos) {
+		HashMap<String,String> tipos = new HashMap<String,String>();
+		
+		for (int i = 0; i <filtroEventos.size();i++) {
+			tipos.get(filtroeventos.get(i), null)
+		}
+		
+	}
+	*/
 	public static void filtrarEventos(HashMap<String,eventos> listaEventos) {
 		String tipo;
 		String clave;
 	    Iterator<String> eventos = listaEventos.keySet().iterator();
+	    //---------- Mostrar Todos los tipos de entradas------------
+	    
+
+	    
+	    
+	    
+	    
+	    
+	    //
 	    System.out.println("Ingrese el tipo del evento a buscar:\nmusica\ndeportes\ncharla");
+	    
+	    
+	    
 	    tipo= scan.nextLine();
 	    while(eventos.hasNext()){
 	        clave = eventos.next();
@@ -151,6 +176,8 @@ public class sistema {
 	        	System.out.println(listaEventos.get(clave).getNombre_evento() +" - "+listaEventos.get(clave).getUbicacion_evento()+" - "+listaEventos.get(clave).getTipo_evento()+" - "+listaEventos.get(clave).getFecha());
 	        }
 	    }
+	    
+	    
 	}
 	public static void compras(HashMap<String,eventos> listaEventos, usuario obj1) {
 		String clave;
@@ -164,13 +191,12 @@ public class sistema {
 	    	System.out.println("Se requiere iniciar sesion ");
 	    	return;
 	    }
-	    System.out.println("Ingrese el nombre del evento a comprar:");
+	    System.out.println("Ingrese el nombre del evento :");
 	    evento=scan.nextLine();
 	    System.out.println("¿Que tipo de entrada desea comprar?: \ngeneral\npremium\nvip");
 	    entrada=scan.nextLine();
-	    System.out.println("Cantidad de entradas que desea comprar:");
+	    System.out.println("Cantidad que desea comprar:");
 	    cantidad=Integer.parseInt(scan.nextLine());
-	 
 	    
 	    while(eventos.hasNext()){
 	        clave = eventos.next();
@@ -194,13 +220,12 @@ public class sistema {
 	        
 	    }
 	    
-	    
 	    System.out.println("Su total es de $"+total+" Desea concretar la compra:\n y/n");
 	    a=scan.nextLine(); 
 	    if (a.equals("n")) {
 	    	System.out.println("No se realizo su compra");
 	    	return;
 	    }
-	    System.out.println("Su compra se realizo con éxito\nSus entradas han sido enviadas al siguiente correo:"+obj1.getCorreo_usuario()+"\nNos contactaremos al numero "+obj1.getTelefono()+" para confirmar su compra.");
+	    System.out.println("Su compra se realizo con exito\nSus entradas han sido enviadas al siguiente correo:"+obj1.getCorreo_usuario()+"\nNos contactaremos al numero "+obj1.getTelefono()+" para confirmar su compra");
 	}
 }

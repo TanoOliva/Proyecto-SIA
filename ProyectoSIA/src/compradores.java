@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 public class compradores {
-
+	
+	
 	private int cantidad_Vendida;
-	private ArrayList<String> Nombres= new ArrayList<String>();
+	private ArrayList<String> Nombres = new ArrayList<String>();
 	
 	
 	public void set_vendidas(int ventas) {
