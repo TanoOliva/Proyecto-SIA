@@ -24,10 +24,11 @@ public class sistema {
 		System.out.println(" 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
 		System.out.println("Ingrese opción:");
 		opcion = Integer.parseInt(scan.nextLine());
+		boolean sesionIniciada = false;
 		
 		while (true) {
 			
-			if (opcion == 1) {
+			if (opcion == 1 && sesionIniciada == false) {
 				
 				System.out.println("Ingrese los datos socilitados:");
 	        	System.out.println("Nombre y apellido (todo en minuscula):");
@@ -45,8 +46,12 @@ public class sistema {
 	        	System.out.println("Cuidad donde recide:");
 	        	ingresado = scan.nextLine();
 	        	obj1.setUbicacion_usuario(ingresado);
-	        	saludar(obj1.getNombre_usuario());
-				
+	        	sesionIniciada = true;
+	        	saludar(obj1.getNombre_usuario());	
+			}else {
+				if (opcion == 1 && sesionIniciada == true) {
+					System.out.println("Ya se encuentra una sesion iniciada");
+				}
 			}
 			if (opcion == 2) {
 				System.out.println(" 1- Lista de eventos\n 2- Buscar eventos\n 3- Filtrar eventos por tipo\n 4- Mostrar Compradores y cantidad total de entradas vendidas del evento\n 0- Volver al menu principal\n");
@@ -90,17 +95,22 @@ public class sistema {
 			if (opcion == 0) {
 				break;
 			}
-			
+			/*
 			System.out.println("\n\n 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
 			System.out.println("Ingrese opción:");
 			opcion = Integer.parseInt(scan.nextLine());
-			
+			*/
 			
 			if (opcion > 4 || opcion < 0) {
 				System.out.println("ERROR:\ningrese una de las siguientes opciones");
 				System.out.println(" 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
 				opcion = Integer.parseInt(scan.nextLine());
+			}else {
+				System.out.println("\n 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
+				System.out.println("Ingrese opción:");
+				opcion = Integer.parseInt(scan.nextLine());
 			}
+			
 			
 		}
 	
@@ -139,7 +149,7 @@ public class sistema {
 	    
 	static void saludar(String nombre){
 	    System.out.println("Hola "+ nombre+" te has registrado con éxito :) \n");
-	    System.out.println("MENU PRINCIPAL:\n");
+	    System.out.println("MENU PRINCIPAL:");
 	}
 
 	
