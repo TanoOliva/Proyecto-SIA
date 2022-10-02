@@ -21,13 +21,14 @@ public class sistema {
 		usuario obj1 = new usuario();
 		String ingresado;
 		int int_ingresado;
+		boolean sesionIniciada = false;
 		
 		System.out.println("MENU\n");
 		
 		System.out.println(" 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
 		System.out.println("Ingrese opción:");
 		opcion = Integer.parseInt(scan.nextLine());
-		boolean sesionIniciada = false;
+		
 		
 		while (true) {
 			
