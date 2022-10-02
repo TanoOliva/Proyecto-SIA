@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-// holi 
+
 public class sistema {
 	static Scanner scan = new Scanner(System.in);
 	static int opcion = -1;
@@ -62,7 +62,7 @@ public class sistema {
 				}
 				if(e == 3) {
 					
-					//filtrarEventos(listaEventos);
+					filtrarEventos(listaEventos,filtroEventos);
 				}
 				if (e==4) {
 					String buscado;
@@ -91,7 +91,7 @@ public class sistema {
 				break;
 			}
 			
-			System.out.println(" 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
+			System.out.println("\n\n 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
 			System.out.println("Ingrese opción:");
 			opcion = Integer.parseInt(scan.nextLine());
 			
@@ -142,30 +142,36 @@ public class sistema {
 	    System.out.println("MENU PRINCIPAL:\n");
 	}
 
-	/*
-	static void mostrarTipos(ArrayList<eventos> filtroEventos) {
-		HashMap<String,String> tipos = new HashMap<String,String>();
+	
+	
+	
+	// se crea un hashmap para poder almacenar solo una vez cada tipo de evento
+	public static void almacenarTipos(ArrayList<eventos> filtroEventos, HashMap<String,String> tipos) {
 		
 		for (int i = 0; i <filtroEventos.size();i++) {
-			tipos.get(filtroeventos.get(i), null)
+			//se añaden los eventos al hashmap como key el tipo de evento
+			tipos.put(filtroEventos.get(i).getTipo_evento(), filtroEventos.get(i).getTipo_evento());
 		}
 		
 	}
-	*/
-	public static void filtrarEventos(HashMap<String,eventos> listaEventos) {
+	
+	
+	
+	
+	public static void filtrarEventos(HashMap<String,eventos> listaEventos,ArrayList<eventos> filtroEventos) {
 		String tipo;
 		String clave;
 	    Iterator<String> eventos = listaEventos.keySet().iterator();
+	    HashMap<String,String> tipos = new HashMap<String,String>();
 	    //---------- Mostrar Todos los tipos de entradas------------
+	    almacenarTipos(filtroEventos,tipos);
 	    
-
-	    
-	    
-	    
-	    
-	    
-	    //
-	    System.out.println("Ingrese el tipo del evento a buscar:\nmusica\ndeportes\ncharla");
+	    System.out.println("Ingrese el tipo del evento a buscar: ");
+	    for (String keyTipo:tipos.keySet()) {
+	    	System.out.println(keyTipo);
+	    	
+	    }
+	    System.out.print("\n\n");
 	    
 	    
 	    
@@ -179,6 +185,7 @@ public class sistema {
 	    
 	    
 	}
+	
 	public static void compras(HashMap<String,eventos> listaEventos, usuario obj1) {
 		String clave;
 		String evento;
