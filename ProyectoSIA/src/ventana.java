@@ -20,12 +20,17 @@ import java.awt.Window.Type;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
 
 public class ventana extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -61,16 +66,16 @@ public class ventana extends JFrame {
 		contentPane.add(list);
 		
 		JLabel lblNewLabel = new JLabel("DIGITAL TICKET");
+		lblNewLabel.setBounds(186, 20, 148, 78);
 		lblNewLabel.setForeground(new Color(0, 0, 0));
-		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.ITALIC, 10));
+		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 23));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBackground(new Color(64, 0, 128));
-		lblNewLabel.setBounds(186, 10, 148, 78);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel(" USUARIO :");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(120, 139, 77, 22);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel_1);
 		
 		textField = new JTextField();
@@ -78,17 +83,22 @@ public class ventana extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("CONTRASEÑA : ");
+		JLabel lblNewLabel_2 = new JLabel("RUT : ");
+		lblNewLabel_2.setBounds(116, 249, 102, 30);
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(103, 249, 102, 30);
 		contentPane.add(lblNewLabel_2);
 		
+		final ventana_menu w2 = new ventana_menu();
+		
+		
 		JButton btnNewButton = new JButton("INGRESAR ");
+		btnNewButton.setBounds(206, 322, 120, 30);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JOptionPane.showMessageDialog(null, "Bienvenido a la aplicacion");
-				
+				JOptionPane.showMessageDialog(null, "BIENVENIDO A LA APLICACIÓN");
+				w2.setVisible(true);
+				dispose();
 				
 				
 				
@@ -97,11 +107,11 @@ public class ventana extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(206, 322, 120, 30);
 		contentPane.add(btnNewButton);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(215, 255, 96, 19);
-		contentPane.add(passwordField);
+		textField_1 = new JTextField();
+		textField_1.setBounds(215, 255, 96, 19);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
 	}
 }
