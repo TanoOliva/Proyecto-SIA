@@ -66,7 +66,7 @@ public class ventana extends JFrame {
 		contentPane.add(list);
 		
 		JLabel lblNewLabel = new JLabel("DIGITAL TICKET");
-		lblNewLabel.setBounds(186, 20, 148, 78);
+		lblNewLabel.setBounds(191, 20, 148, 78);
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 23));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -99,11 +99,6 @@ public class ventana extends JFrame {
 				JOptionPane.showMessageDialog(null, "BIENVENIDO A LA APLICACIÓN");
 				w2.setVisible(true);
 				dispose();
-				
-				
-				
-				
-				
 				
 			}
 		});

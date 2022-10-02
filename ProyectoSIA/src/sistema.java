@@ -15,12 +15,15 @@ public class sistema {
 		
 		
 		CSV archivo=new CSV();
-		archivo.leerArchivo("C:\\Users\\lukio\\Desktop\\Eventos2.csv",listaEventos);
-		archivo.leerArchivo("C:\\Users\\lukio\\Desktop\\Eventos2.csv",filtroEventos);
+		archivo.leerArchivo("C:\\Users\\antop\\OneDrive\\Escritorio\\Eventos.csv",listaEventos);
+		archivo.leerArchivo("C:\\Users\\antop\\OneDrive\\Escritorio\\Eventos.csv",filtroEventos);
 		
 		usuario obj1 = new usuario();
 		String ingresado;
 		int int_ingresado;
+		
+		System.out.println("MENU\n");
+		
 		System.out.println(" 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
 		System.out.println("Ingrese opción:");
 		opcion = Integer.parseInt(scan.nextLine());
