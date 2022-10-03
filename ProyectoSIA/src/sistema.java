@@ -8,7 +8,7 @@ public class sistema {
 	static Scanner scan = new Scanner(System.in);
 	static int opcion = -1;
 	static int e = -1;
-
+	
 	public static void main(String[] args) {
 		HashMap<String,eventos> listaEventos = new HashMap<String,eventos>();
 		ArrayList <eventos> filtroEventos = new ArrayList<eventos>();
@@ -62,7 +62,7 @@ public class sistema {
 				
 				if(e == 1) {
 					System.out.println("lista de eventos");
-					mostrarEventos(listaEventos);
+					System.out.println(mostrarEventos(listaEventos));
 				}
 				if(e == 2) {
 					System.out.println("Buscar eventos por nombre");
@@ -125,15 +125,16 @@ public class sistema {
 		
 		
 	}
-	public static void mostrarEventos(HashMap<String,eventos> listaEventos) {
+	public static String mostrarEventos(HashMap<String,eventos> listaEventos) {
 		String clave;
-		
+		String cadena="";
 	    Iterator<String> eventos = listaEventos.keySet().iterator();
 	    System.out.println("Hay los siguientes productos:");
 	    while(eventos.hasNext()){
 	        clave = eventos.next();
-	        System.out.println(listaEventos.get(clave).getNombre_evento() +" - "+listaEventos.get(clave).getUbicacion_evento());
+	        cadena+=listaEventos.get(clave).getNombre_evento() +" - "+listaEventos.get(clave).getUbicacion_evento()+"\n";
 	    }  
+	    return cadena;
 	}
 	public static void buscarEventos(HashMap<String,eventos> listaEventos) {
 		String buscado;

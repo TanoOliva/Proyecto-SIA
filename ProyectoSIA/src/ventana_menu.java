@@ -65,9 +65,12 @@ public class ventana_menu extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Lista eventos");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventanalist vl = new ventanalist();
+				VentanaMostrar vl = new VentanaMostrar();
 				vl.setVisible(true);
 				dispose();
+				
+				
+				
 				
 				
 				
