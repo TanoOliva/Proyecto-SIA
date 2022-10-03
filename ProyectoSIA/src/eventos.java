@@ -74,6 +74,8 @@ public class eventos {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+	
+	
 	public compradores manipular() {
 		return name;
 	}
