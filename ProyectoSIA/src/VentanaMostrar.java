@@ -14,6 +14,8 @@ public class VentanaMostrar extends JFrame {
 	private JPanel contentPane;
 	
 	sistema op;
+
+	private JTextArea txtArea;
 	/**
 	 * Launch the application.
 	 */
@@ -45,15 +47,16 @@ public class VentanaMostrar extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 10, 416, 243);
 		contentPane.add(scrollPane);
-		sistema aux=null;
-		HashMap<String,eventos> lista = new HashMap<String,eventos>();
-		CSV archivo=new CSV();
-		archivo.leerArchivo("C:\\Users\\esteb\\eclipse-workspace\\sistema\\src\\Eventos.csv",lista);
+		
+		txtArea = new JTextArea();	
+		txtArea.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		scrollPane.setViewportView(txtArea);
+	}
+
+	public void setmostrar(HashMap<String, eventos> lista, sistema aux) {
 		String cadena=aux.mostrarEventos(lista);
-		JTextArea txtrFdghj = new JTextArea();
-		txtrFdghj.setText(cadena);
-		txtrFdghj.setFont(new Font("Monospaced", Font.PLAIN, 15));
-		scrollPane.setViewportView(txtrFdghj);
+		txtArea.setText(cadena);
+		
 	}
 
 	
