@@ -15,8 +15,8 @@ public class sistema {
 		
 		
 		CSV archivo=new CSV();
-		archivo.leerArchivo("C:\\Users\\antop\\OneDrive\\Escritorio\\Eventos.csv",listaEventos);
-		archivo.leerArchivo("C:\\Users\\antop\\OneDrive\\Escritorio\\Eventos.csv",filtroEventos);
+		archivo.leerArchivo("C:\\Users\\lukio\\Desktop\\Eventos2.csv",listaEventos);
+		archivo.leerArchivo("C:\\Users\\lukio\\Desktop\\Eventos2.csv",filtroEventos);
 		
 		usuario obj1 = new usuario();
 		String ingresado;
@@ -198,18 +198,51 @@ public class sistema {
 		String a;
 		int total=0;
 		int cantidad;
-	    Iterator<String> eventos = listaEventos.keySet().iterator();
+	    
 	    if(obj1.getNombre_usuario() == null) {
 	    	System.out.println("Se requiere iniciar sesion ");
 	    	return;
 	    }
+	    
+	    //ingreso de datos para la compra de entradas
 	    System.out.println("Ingrese el nombre del evento :");
 	    evento=scan.nextLine();
+	    if (listaEventos.get(evento) == null) {
+	    	while(true) {
+	    		System.out.println("Ingrese un nombre de evento EXISTENTE: ");
+	    	    evento=scan.nextLine();
+	    	    if (listaEventos.get(evento) != null) break;
+	    	}
+	    }
 	    System.out.println("¿Que tipo de entrada desea comprar?: \ngeneral\npremium\nvip");
 	    entrada=scan.nextLine();
+	    while (true) {
+	    	if(entrada.equals("general")) break;
+	    	if(entrada.equals("vip")) break;
+	    	if(entrada.equals("premium")) break;
+	    	System.out.println("Por favor ingrese una de las siguientes opciones: \ngeneral\npremium\nvip");
+	    	entrada=scan.nextLine();
+	    }
 	    System.out.println("Cantidad que desea comprar:");
 	    cantidad=Integer.parseInt(scan.nextLine());
 	    
+	    if (entrada.equals("general")) {
+    		listaEventos.get(evento).setStock_G(listaEventos.get(evento).getStock_G()-cantidad);
+    		total=listaEventos.get(evento).getPrecio_g()*cantidad;
+    	}
+	    
+    	if (entrada.equals("premium")) {
+    		listaEventos.get(evento).setStock_P(listaEventos.get(evento).getStock_P()-cantidad);
+    		total=listaEventos.get(evento).getPrecio_P()*cantidad;
+    	}
+    	if (entrada.equals("vip")) {
+    		listaEventos.get(evento).setStock_V(listaEventos.get(evento).getStock_V()-cantidad);
+    		total=listaEventos.get(evento).getPrecio_V()*cantidad;
+    	}
+	    
+	    
+	    
+	    /*
 	    while(eventos.hasNext()){
 	        clave = eventos.next();
 	        if (evento.equals(listaEventos.get(clave).getNombre_evento().toLowerCase())) {
@@ -231,7 +264,7 @@ public class sistema {
 	        }
 	        
 	    }
-	    
+	    */
 	    System.out.println("Su total es de $"+total+" Desea concretar la compra:\n y/n");
 	    a=scan.nextLine(); 
 	    if (a.equals("n")) {

@@ -92,9 +92,6 @@ public class CSV {
 		obj1.setStock_P(Integer.parseInt(partes[7]));
 		obj1.setPrecio_V(Integer.parseInt(partes[8]));
 		obj1.setStock_V(Integer.parseInt(partes[9]));
-		
-		//comprobacion precio Vip
-		//System.out.println(partes[6]);
 		listaEventos.put(obj1.getNombre_evento(), obj1);
 		/*
 		for(int i=0; i<partes.length;i++) {
