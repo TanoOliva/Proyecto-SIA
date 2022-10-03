@@ -21,14 +21,13 @@ public class sistema {
 		usuario obj1 = new usuario();
 		String ingresado;
 		int int_ingresado;
-		boolean sesionIniciada = false;
 		
 		System.out.println("MENU\n");
 		
 		System.out.println(" 1- Ingresar sesión\n 2- Eventos\n 3- Comprar entrada\n 0- Salir\n");
 		System.out.println("Ingrese opción:");
 		opcion = Integer.parseInt(scan.nextLine());
-		
+		boolean sesionIniciada = false;
 		
 		while (true) {
 			
@@ -67,26 +66,16 @@ public class sistema {
 				}
 				if(e == 2) {
 					System.out.println("Buscar eventos por nombre");
-					buscarEventos(listaEventos);
+					System.out.println("Ingrese el nombre del evento a Mostrar:");
+				    String buscado= scan.nextLine();
+					System.out.println(buscarEventos(listaEventos,buscado));
 				}
 				if(e == 3) {
 					
 					filtrarEventos(listaEventos,filtroEventos);
 				}
 				if (e==4) {
-					String buscado;
-					String clave;
-				    Iterator<String> eventos = listaEventos.keySet().iterator();
-				    System.out.println("Ingrese el nombre del evento a Mostrar:");
-				    buscado= scan.nextLine();
-				    while(eventos.hasNext()){
-				        clave = eventos.next();
-				        if (buscado.equals(listaEventos.get(clave).getNombre_evento().toLowerCase())) {
-				        	listaEventos.get(clave).manipular().get_Nombre();
-				        	System.out.println("Cantidad de entradas vendidas: "+listaEventos.get(clave).manipular().get_vendidas());
-				        }
-				        
-				    }  
+		
 					
 				}
 				if (e == 0) {
@@ -137,19 +126,20 @@ public class sistema {
 	    }  
 	    return cadena;
 	}
-	public static void buscarEventos(HashMap<String,eventos> listaEventos) {
-		String buscado;
+	public static String buscarEventos(HashMap<String,eventos> listaEventos, String buscado) {
+		String cadena="";
 		String clave;
 	    Iterator<String> eventos = listaEventos.keySet().iterator();
-	    System.out.println("Ingrese el nombre del evento a buscar:");
-	    buscado= scan.nextLine();
+	    
 	    while(eventos.hasNext()){
 	        clave = eventos.next();
 	        if (buscado.equals(listaEventos.get(clave).getNombre_evento().toLowerCase())) {
-	        	System.out.println(listaEventos.get(clave).getNombre_evento() +" - "+listaEventos.get(clave).getUbicacion_evento()+" - "+listaEventos.get(clave).getTipo_evento()+" - "+listaEventos.get(clave).getFecha());
+	        	cadena+=listaEventos.get(clave).getNombre_evento() +" - "+listaEventos.get(clave).getUbicacion_evento()+" - "+listaEventos.get(clave).getTipo_evento()+" - "+listaEventos.get(clave).getFecha();
+	        	return cadena;
 	        }
 	        
-	    }  
+	    }
+		return cadena="No se encuentra el evento";  
 	}  
 	    
 	static void saludar(String nombre){

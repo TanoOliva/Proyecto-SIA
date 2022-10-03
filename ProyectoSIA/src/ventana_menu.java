@@ -27,10 +27,7 @@ public class ventana_menu extends JFrame {
 	
 	public static void main(String[] args) {
 		
-		HashMap<String,eventos> list = new HashMap<String,eventos>();
-		CSV archivo=new CSV();
-		archivo.leerArchivo("C:\\Users\\antop\\OneDrive\\Escritorio\\Eventos.csv",list);
-		
+
 	
 		
 		
@@ -52,7 +49,10 @@ public class ventana_menu extends JFrame {
 	public ventana_menu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 759, 549);
-		
+		sistema aux=null;
+		HashMap<String,eventos> lista = new HashMap<String,eventos>();
+		CSV archivo=new CSV();
+		archivo.leerArchivo("C:\\Users\\esteb\\eclipse-workspace\\sistema\\src\\Eventos.csv",lista);
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
@@ -60,17 +60,14 @@ public class ventana_menu extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		
-		
-		
+
 		JMenuItem mntmNewMenuItem = new JMenuItem("Lista eventos");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaMostrar vl = new VentanaMostrar();
 				vl.setVisible(true);
+				vl.setmostrar(lista,aux);
 				dispose();
-				
-				
-				
 				
 				
 				
@@ -83,6 +80,7 @@ public class ventana_menu extends JFrame {
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventanaBuscar vl = new ventanaBuscar();
+				vl.buqueda(lista,aux);
 				vl.setVisible(true);
 				dispose();
 				
